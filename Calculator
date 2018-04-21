@@ -1,0 +1,209 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
+{
+    public partial class Form1 : Form
+    {
+        string entry = string.Empty;
+        string FirstOperand = string.Empty;
+        string SecondOperand = string.Empty;
+        char Operation;
+        float Num, Result = 0;
+
+        public Form1()
+        {
+            InitializeComponent();
+           
+        }
+
+        private void Number0_Click(object sender, EventArgs e)
+        {
+            this.Screen.Text = "";
+            entry += "0";
+            this.Screen.Text += entry;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Screen.Text = "";
+            entry += "1";
+            this.Screen.Text += entry;
+        }
+        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Screen.Text = "";
+            entry += "2";
+            this.Screen.Text += entry;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Screen.Text = "";
+            entry += "3";
+            this.Screen.Text += entry;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Screen.Text = "";
+            entry += "4";
+            this.Screen.Text += entry;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Screen.Text = "";
+            entry += "5";
+            this.Screen.Text += entry;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Screen.Text = "";
+            entry += "6";
+            this.Screen.Text += entry;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Screen.Text = "";
+            entry += "7";
+            this.Screen.Text += entry;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Screen.Text = "";
+            entry += "8";
+            this.Screen.Text += entry;
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            this.Screen.Text = "";
+            entry += "9";
+            this.Screen.Text += entry;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Screen_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dot_Click(object sender, EventArgs e)
+        {
+            this.Screen.Text = "";
+            entry += ",";
+            this.Screen.Text += entry;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Operation = '+';
+            
+            FirstOperand = entry;
+            entry = string.Empty;
+            Screen.Text = entry;
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Operation = '-';
+            FirstOperand = entry;
+            entry = string.Empty;
+            Screen.Text = string.Empty;
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            Operation = '/';
+            FirstOperand = entry;
+            entry = string.Empty;
+            Screen.Text = string.Empty;
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            Operation = '*';
+            FirstOperand = entry;
+            entry = string.Empty;
+            Screen.Text = string.Empty;
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            this.Screen.Text = "";
+            this.entry = string.Empty;
+            this.FirstOperand = string.Empty;
+            this.SecondOperand = string.Empty;
+        }
+
+        private void Equal_Click(object sender, EventArgs e)
+        {
+            SecondOperand = entry;
+            float Num, Num1, Num2;
+            float.TryParse(FirstOperand, out Num1);
+            float.TryParse(SecondOperand, out Num2);
+
+            //this.Screen.Text = "";
+            //this.entry = string.Empty;
+            
+
+            if (Operation == '+')
+            {
+                Result = Num1 + Num2;
+                Screen.Text = FirstOperand + " + " + SecondOperand + " = " + Result.ToString();
+                //Num = Result;
+
+            }
+            else if (Operation == '-')
+            {
+                Result = Num1 - Num2;
+                Screen.Text = FirstOperand + " - " + SecondOperand + " = " + Result.ToString();
+
+            }
+            else if (Operation == '*')
+            {
+                Result = Num1 * Num2;
+                Screen.Text = FirstOperand + " * " + SecondOperand + " = " + Result.ToString();
+            }
+            else if (Operation == '/')
+            {
+                if (Num2 != 0)
+                {
+                    Result = Num1 / Num2;
+                    Screen.Text = FirstOperand + " / " + SecondOperand + " = " +  Result.ToString();
+
+                }
+                else
+                {
+                    Screen.Text = "No Result!";
+                }
+            }
+
+            this.FirstOperand = string.Empty;
+            this.SecondOperand = string.Empty;
+
+        }
+    }
+}
