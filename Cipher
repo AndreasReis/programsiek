@@ -1,0 +1,117 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Cipher
+{
+    class Program
+    {
+        static int ShiftKey = 5;
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Please enter Text for Encryption");
+            string input = Console.ReadLine();
+
+            string CipherText = Encryption(input);
+            string OriginalText = Decryption(CipherText);
+
+            //Console.Write("Enter Swift Key: ", ShiftKey);
+            //Console.ReadLine();
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Cipher Text after Encryption: {0}", CipherText);
+            Console.WriteLine("Please Press Enter for Decryption");
+            Console.ReadLine();
+            Console.WriteLine("Plain Text after Decryption: {0}", OriginalText);
+            Console.ReadLine();
+
+        }
+
+            static string Encryption(string PlainText)
+            {
+                string EncryptedText = string.Empty;
+                char outChar, LowerLimit, UpperLimit;
+
+                char[] chrs = PlainText.ToCharArray();
+
+                foreach (Char ch in chrs)
+                {
+                    if(Char.IsLetter(ch) == false)
+                    {
+                        outChar = ch;
+                    }
+                    else
+                    {
+                        outChar = (char)(ch + ShiftKey);
+
+                        if(Char.IsLower(ch))
+                        {
+                            LowerLimit = 'a';
+                            UpperLimit = 'z';
+                        }
+                        else
+                        {
+                            LowerLimit = 'A';
+                            UpperLimit = 'Z';
+                        }
+
+                        if(outChar > UpperLimit)
+                        {
+                            outChar = (char)(outChar - 26);
+                        }
+                        else if(outChar < LowerLimit)
+                        {
+                            outChar = (char)(outChar + 26);
+                        }
+                    }
+
+                    EncryptedText += outChar;
+                }
+                return EncryptedText;
+            }
+
+            static string Decryption(string CipherText)
+        {
+            string DecryptedText = string.Empty;
+            char outChar, LowerLimit, UpperLimit;
+
+            char[] chrs = CipherText.ToCharArray();
+            foreach(Char ch in chrs)
+            {
+                if(Char.IsLetter(ch) == false)
+                {
+                    outChar = ch;
+                }
+                else
+                {
+                    outChar = (char)(ch - ShiftKey);
+                    if(Char.IsLower(ch))
+                    {
+                        LowerLimit = 'a';
+                        UpperLimit = 'z';
+                    }
+                    else
+                    {
+                        LowerLimit = 'A';
+                        UpperLimit = 'Z';
+                    }
+
+                    if(outChar > UpperLimit)
+                    {
+                        outChar = (char)(outChar - 26);
+                    }
+                    else if (outChar < LowerLimit)
+                    {
+                        outChar = (char)(outChar + 26);
+                    }
+                }
+
+                DecryptedText += outChar;
+            }
+
+            return DecryptedText;
+        }
+    }
+}
