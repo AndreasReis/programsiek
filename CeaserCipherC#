@@ -88,7 +88,7 @@ namespace CesarCipher
                 string text = arguments[0] as string;
                 int shift = (int)arguments[1];
 
-                return Dencryption(text, shift);
+                return Encryption(text, shift);
             }
 
             return string.Empty;
